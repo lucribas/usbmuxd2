@@ -107,7 +107,7 @@ void Client::readData(){
     retassure(readsize, "out of bufspace for client");
     got = recv(_fd, _recvbuffer+_recvBytesCnt, readsize, 0);
     if (got == 0) {
-        retcustomerror(MUXException_client_disconnected, "client %d disconnected!",_fd);
+        retcustomerror(MUXException_client_disconnected, "client %d disconnected!");
     }
     assure(got > 0);
     _recvBytesCnt+=got;
@@ -295,7 +295,7 @@ void Client::processData(const usbmuxd_header *hdr){
                     const char *pairRecord = NULL;
                     uint64_t pairRecord_len = 0;
                     retassure(pairRecord = plist_get_data_ptr(p_pairRecord, &pairRecord_len), "Failed to get data ptr for PairRecordData");
-                    plist_from_memory(pairRecord, (uint32_t)pairRecord_len, &p_parsedPairRecord, NULL);
+                    plist_from_memory(pairRecord, (uint32_t)pairRecord_len, &p_parsedPairRecord);
                 }
                 retassure(p_parsedPairRecord, "Failed to plist-parse received PairRecordData");
 

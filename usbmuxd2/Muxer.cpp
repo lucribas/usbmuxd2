@@ -497,7 +497,7 @@ plist_t Muxer::getDevicePlist(std::shared_ptr<Device> dev) noexcept{
             break;
         }
         if (wifidev->_interfaceIndex) {
-            plist_dict_set_item(p_props, "InterfaceIndex", plist_new_int(wifidev->_interfaceIndex));
+            plist_dict_set_item(p_props, "InterfaceIndex", plist_new_uint(wifidev->_interfaceIndex));
         }
     }else{
         assert(0); //THIS SHOULD NOT HAPPEN!!!
